@@ -1,2 +1,3 @@
 # raytracer
-RayTracer for IMAGE classes
+
+RayTracer for IMAGE lessons
