@@ -30,7 +30,3 @@ Vector3 Vector3::operator/(const Vector3& v) const {
 std::ostream &operator<<(std::ostream &out, const Vector3 &vect) {
     return out << "(" << vect.x_ << "," << vect.y_ << "," << vect.z_ << ")";
 }
-
-int Vector3::get_x() {
-
-}

@@ -5,8 +5,9 @@
 #ifndef RAYTRACER_UNIFORMTEXTURE_HH
 #define RAYTRACER_UNIFORMTEXTURE_HH
 
+#include <scene/texture/texturematerial.hh>
 
-class UniformTexture {
+class UniformTexture : public TextureMaterial {
 
 };
 

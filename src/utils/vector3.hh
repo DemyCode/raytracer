@@ -11,6 +11,7 @@ class Vector3
 {
 public:
     Vector3(int x, int y, int z);
+    Vector3() = default;
     Vector3 operator+(const Vector3& v) const;
     Vector3 operator-(const Vector3& v) const;
     Vector3 operator*(const Vector3& v) const;
