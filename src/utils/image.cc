@@ -32,3 +32,12 @@ void Image::ppm_creator(std::string filename) {
         }
     }
 }
+
+ColorRGB Image::getPixel(int x, int y)
+{
+    return this->pixels_[y][x];
+}
+
+void Image::setPixel(int x, int y, ColorRGB pixel) {
+    this->pixels_[y][x] = pixel;
+}

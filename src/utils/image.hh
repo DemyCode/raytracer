@@ -15,6 +15,8 @@
 class Image {
 public:
     Image(int width, int height, std::vector<std::vector<ColorRGB>> pixels);
+    ColorRGB getPixel(int x, int y);
+    void setPixel(int x, int y, ColorRGB pixel);
     void ppm_creator(std::string filename);
 private:
     size_t width_;
