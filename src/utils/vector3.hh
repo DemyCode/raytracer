@@ -11,11 +11,11 @@ class Vector3
 {
 public:
     Vector3(int x, int y, int z);
-    Vector3 operator+(Vector3 v);
-    Vector3 operator-(Vector3 v);
-    Vector3 operator*(Vector3 v);
-    Vector3 operator/(Vector3 v);
-    std::ostream& operator<<(std::ostream &out);
+    Vector3 operator+(const Vector3& v) const;
+    Vector3 operator-(const Vector3& v) const;
+    Vector3 operator*(const Vector3& v) const;
+    Vector3 operator/(const Vector3& v) const;
+    friend std::ostream& operator<<(std::ostream &out, const Vector3 &vect);
 private:
     int x_;
     int y_;

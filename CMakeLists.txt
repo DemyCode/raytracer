@@ -13,11 +13,13 @@ else()
 endif ()
 
 include_directories(src)
+
 add_subdirectory(src)
 
 add_executable(raytracer src/main.cc)
 
-target_link_libraries(utils)
+target_link_libraries(raytracer
+        utils)
 
 if (BUILD_TEST)
     add_subdirectory(tests)

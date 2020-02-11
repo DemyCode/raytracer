@@ -5,6 +5,8 @@
 #ifndef RAYTRACER_COLOR_H
 #define RAYTRACER_COLOR_H
 
+#define MAX_RGB_INTENSITY 255
+
 class ColorRGB
 {
 public:
