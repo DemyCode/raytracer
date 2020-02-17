@@ -7,11 +7,13 @@
 
 #include <scene/texture/texturematerial.hh>
 #include <utils/vector3.hh>
+#include <utils/ray.hh>
 
 class Object {
-    virtual bool intersect(Vector3 point, Vector3 vector) = 0;
-    virtual bool normal(Vector3 point);
-    virtual bool getTexture(Vector3 point);
+public:
+    virtual Vector3* intersect(Ray ray) = 0;
+    virtual bool normal(Vector3 point) = 0;
+    virtual bool getTexture(Vector3 point) = 0;
 };
 
 

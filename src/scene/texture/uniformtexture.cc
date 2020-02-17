@@ -4,3 +4,6 @@
 
 #include "uniformtexture.hh"
 
+void UniformTexture::getTexture() {
+
+}

@@ -7,7 +7,10 @@
 
 
 class TextureMaterial {
-
+    virtual void getTexture() = 0;
+private:
+    float kd;
+    float ks;
 };
 
 

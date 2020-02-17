@@ -8,7 +8,7 @@
 #include <scene/texture/texturematerial.hh>
 
 class UniformTexture : public TextureMaterial {
-
+    void getTexture() override;
 };
 
 

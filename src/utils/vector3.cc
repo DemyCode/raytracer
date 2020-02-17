@@ -4,7 +4,7 @@
 
 #include "vector3.hh"
 
-Vector3::Vector3(int x, int y, int z)
+Vector3::Vector3(float x, float y, float z)
 {
     this->x_ = x;
     this->y_ = y;
@@ -29,4 +29,16 @@ Vector3 Vector3::operator/(const Vector3& v) const {
 
 std::ostream &operator<<(std::ostream &out, const Vector3 &vect) {
     return out << "(" << vect.x_ << "," << vect.y_ << "," << vect.z_ << ")";
+}
+
+float Vector3::getX() {
+    return x_;
+}
+
+float Vector3::getY() {
+    return y_;
+}
+
+float Vector3::getZ() {
+    return z_;
 }

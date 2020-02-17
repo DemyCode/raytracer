@@ -9,8 +9,8 @@
 
 class Camera {
 public:
+    Camera() = default;
     Camera(Vector3 location, Vector3 target, Vector3 upvector);
-
 private:
     Vector3 location_;
     Vector3 target_;

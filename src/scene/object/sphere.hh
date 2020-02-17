@@ -7,8 +7,18 @@
 
 #include "object.hh"
 
-class Sphere : public Object{
-    
+class Sphere : public Object
+{
+public:
+    Sphere(Vector3 center, int r);
+    Sphere(Sphere const &) = default;
+    Sphere() = default;
+    Vector3* intersect(Ray ray) override;
+    bool normal(Vector3 point) override;
+    bool getTexture(Vector3 point) override;
+private:
+    Vector3 center_;
+    int r_;
 };
 
 

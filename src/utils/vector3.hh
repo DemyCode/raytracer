@@ -10,17 +10,22 @@
 class Vector3
 {
 public:
-    Vector3(int x, int y, int z);
+    Vector3(float x, float y, float z);
     Vector3() = default;
     Vector3 operator+(const Vector3& v) const;
     Vector3 operator-(const Vector3& v) const;
     Vector3 operator*(const Vector3& v) const;
     Vector3 operator/(const Vector3& v) const;
     friend std::ostream& operator<<(std::ostream &out, const Vector3 &vect);
+
+    float getX();
+    float getY();
+    float getZ();
+
 private:
-    int x_;
-    int y_;
-    int z_;
+    float x_;
+    float y_;
+    float z_;
 };
 
 #endif //RAYTRACER_VECTOR3_H
