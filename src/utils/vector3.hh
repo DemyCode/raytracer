@@ -6,26 +6,35 @@
 #define RAYTRACER_VECTOR3_H
 
 #include <iostream>
+#include <math.h>
 
 class Vector3
 {
 public:
-    Vector3(float x, float y, float z);
+    Vector3(double x, double y, double z);
     Vector3() = default;
     Vector3 operator+(const Vector3& v) const;
     Vector3 operator-(const Vector3& v) const;
     Vector3 operator*(const Vector3& v) const;
     Vector3 operator/(const Vector3& v) const;
+    double dist(const Vector3& v) const;
+    Vector3 operator*(double val) const;
+    Vector3 operator/(double val) const;
+    double dot(const Vector3& v) const;
+    Vector3 cross(const Vector3& v) const;
+    double norm() const;
+    Vector3 normalize() const;
+
     friend std::ostream& operator<<(std::ostream &out, const Vector3 &vect);
+    double getX();
+    double getY();
 
-    float getX();
-    float getY();
-    float getZ();
-
+    double getZ();
 private:
-    float x_;
-    float y_;
-    float z_;
+    double x_;
+    double y_;
+
+    double z_;
 };
 
 #endif //RAYTRACER_VECTOR3_H

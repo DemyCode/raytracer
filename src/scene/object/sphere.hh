@@ -10,15 +10,18 @@
 class Sphere : public Object
 {
 public:
-    Sphere(Vector3 center, int r);
+    Sphere(Vector3& center, double r);
     Sphere(Sphere const &) = default;
     Sphere() = default;
-    Vector3* intersect(Ray ray) override;
+
+    Sphere(Vector3 center, double r);
+
+    std::optional<Vector3> intersect(Ray ray) override;
     bool normal(Vector3 point) override;
     bool getTexture(Vector3 point) override;
 private:
     Vector3 center_;
-    int r_;
+    double r_;
 };
 
 

@@ -7,7 +7,12 @@
 
 #include <scene/light/light.hh>
 
-class PointLight : Light {
+class PointLight : public Light {
+public:
+    explicit PointLight(Vector3 position);
+    Vector3 getPos();
+private:
+    Vector3 position_;
 };
 
 

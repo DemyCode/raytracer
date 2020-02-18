@@ -6,10 +6,18 @@
 #include "color.hh"
 
 
-Image::Image(int width, int height, std::vector<std::vector<ColorRGB>> pixels) {
+Image::Image(size_t width, size_t height) {
     this->width_ = width;
     this->height_ = height;
-    this->pixels_ = pixels;
+    this->pixels_ = std::vector<std::vector<ColorRGB>>();
+    for (size_t i = 0; i < height; i++)
+    {
+        pixels_.emplace_back(std::vector<ColorRGB>());
+        for (size_t j = 0; j < width; j++)
+        {
+            pixels_[i].push_back(ColorRGB(0, 0, 0));
+        }
+    }
 }
 
 void Image::ppm_creator(std::string filename) {

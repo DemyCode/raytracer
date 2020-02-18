@@ -5,9 +5,9 @@
 #ifndef RAYTRACER_LIGHT_HH
 #define RAYTRACER_LIGHT_HH
 
+#include <utils/vector3.hh>
 
 class Light {
-
 };
 
 
