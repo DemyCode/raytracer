@@ -10,7 +10,7 @@
 class Camera {
 public:
     Camera() = default;
-    Camera(Vector3 location, Vector3 target, Vector3 upvector, size_t anglex, size_t angley, double zmin);
+    Camera(Vector3 location, Vector3 target, Vector3 upvector, double anglex, double angley, double zmin);
     Vector3 getLocation(){ return this->location_; };
     Vector3 getTarget(){ return this->target_; };
     Vector3 getUpvector(){ return this->upvector_; }
@@ -21,8 +21,8 @@ private:
     Vector3 location_;
     Vector3 target_;
     Vector3 upvector_;
-    size_t anglex_;
-    size_t angley_;
+    double anglex_;
+    double angley_;
     double zmin_;
 };
 

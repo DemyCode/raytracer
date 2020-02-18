@@ -67,5 +67,5 @@ ColorRGB Sphere::getTextureColor(Vector3 point)  {
 }
 
 Vector3 Sphere::normal(Vector3 point) {
-    return (point - this->center_) * 2;
+    return (point - this->center_) / this->r_;
 }

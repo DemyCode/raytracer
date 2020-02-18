@@ -4,7 +4,7 @@
 
 #include "camera.hh"
 
-Camera::Camera(Vector3 location, Vector3 target, Vector3 upvector, size_t anglex, size_t angley, double zmin) {
+Camera::Camera(Vector3 location, Vector3 target, Vector3 upvector, double anglex, double angley, double zmin) {
     this->location_ = location;
     this->target_ = target;
     this->upvector_ = upvector;
