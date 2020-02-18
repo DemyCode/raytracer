@@ -4,14 +4,10 @@
 
 #include "sphere.hh"
 
-Sphere::Sphere(Vector3 &center, double r) {
+Sphere::Sphere(Vector3 center, double r, TextureMaterial *textureMaterial) {
     this->center_ = center;
     this->r_ = r;
-}
-
-Sphere::Sphere(Vector3 center, double r) {
-    this->center_ = center;
-    this->r_ = r;
+    this->textureMaterial_ = textureMaterial;
 }
 
 std::optional<Vector3> Sphere::intersect(Ray ray) {
@@ -58,12 +54,18 @@ std::optional<Vector3> Sphere::intersect(Ray ray) {
     return std::nullopt;
 }
 
-bool Sphere::getTexture(Vector3 point) {
-    (void) point;
-    return false;
+double Sphere::getTextureKs(Vector3 point) {
+    return this->textureMaterial_->getTextureKs(point);
 }
 
-bool Sphere::normal(Vector3 point) {
-    (void) point;
-    return false;
+double Sphere::getTextureKd(Vector3 point) {
+    return this->textureMaterial_->getTextureKd(point);
+}
+
+ColorRGB Sphere::getTextureColor(Vector3 point)  {
+    return this->textureMaterial_->getTextureColor(point);
+}
+
+Vector3 Sphere::normal(Vector3 point) {
+    return (point - this->center_) * 2;
 }

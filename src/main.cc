@@ -15,16 +15,17 @@
 
 int main()
 {
-    Sphere sphere1 = Sphere(Vector3(20, 0, 0), 5);
+    auto *shinyred = new UniformTexture(0.8, 0.8, ColorRGB(255, 0, 0));
+    Sphere sphere1 = Sphere(Vector3(20, 0, 0),5, shinyred);
     std::vector<Object*> objects = std::vector<Object*>();
     objects.push_back(&sphere1);
 
-    PointLight light1 = PointLight(Vector3(0, 0, 0));
-    std::vector<Light*> lights = std::vector<Light*>();
+    PointLight light1 = PointLight(Vector3(0, 0, 0), 0.8);
+    std::vector<PointLight*> lights = std::vector<PointLight*>();
     lights.push_back(&light1);
 
     size_t anglex = 90;
-    size_t angley = 90;
+    size_t angley = 45;
     double zmin = 10;
     Vector3 location = Vector3(0, 0, 0);
     Vector3 targetv = Vector3(1, 0, 0);
@@ -43,7 +44,6 @@ int main()
     int height = 768;
 
     Image image = Image(width, height);
-
 
     for (int i = 0; i < height; i++)
     {

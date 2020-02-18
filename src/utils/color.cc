@@ -34,3 +34,14 @@ void ColorRGB::setG(int g) {
 void ColorRGB::setB(int b) {
     this->b_ = b;
 }
+
+ColorRGB ColorRGB::operator*(double val) {
+    return ColorRGB((int)(this->r_ * val), (int)(this->g_ * val), (int)(this->b_ * val));
+}
+
+ColorRGB ColorRGB::operator+(const ColorRGB colorRgb) const {
+    return ColorRGB(
+            this->r_ + colorRgb.r_ ? this->r_ + colorRgb.r_ <= 255 : 255,
+            this->g_ + colorRgb.g_ ? this->g_ + colorRgb.g_ <= 255 : 255,
+            this->b_ + colorRgb.b_ ? this->b_ + colorRgb.b_ <= 255 : 255);
+}

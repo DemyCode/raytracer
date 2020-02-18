@@ -5,12 +5,16 @@
 #ifndef RAYTRACER_TEXTUREMATERIAL_HH
 #define RAYTRACER_TEXTUREMATERIAL_HH
 
+#include <tuple>
+#include <utils/vector3.hh>
+
+#include <utils/color.hh>
 
 class TextureMaterial {
-    virtual void getTexture() = 0;
-private:
-    float kd;
-    float ks;
+public:
+    virtual double getTextureKs(Vector3 point) = 0;
+    virtual double getTextureKd(Vector3 point) = 0;
+    virtual ColorRGB getTextureColor(Vector3 point) = 0;
 };
 
 
