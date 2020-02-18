@@ -24,7 +24,7 @@ int main()
     lights.push_back(&light1);
 
     size_t anglex = 90;
-    size_t angley = 90;
+    size_t angley = 80;
     double zmin = 10;
     Vector3 location = Vector3(0, 0, 0);
     Vector3 targetv = Vector3(1, 0, 0);
