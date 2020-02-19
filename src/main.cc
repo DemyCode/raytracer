@@ -15,16 +15,19 @@
 
 int main()
 {
-    Sphere sphere1 = Sphere(Vector3(20, 0, 0), 5);
+    auto *shinyred = new UniformTexture(1, 1, ColorRGB(255, 0, 0));
+    Sphere sphere1 = Sphere(Vector3(20, 0, 0),5, shinyred);
     std::vector<Object*> objects = std::vector<Object*>();
     objects.push_back(&sphere1);
 
-    PointLight light1 = PointLight(Vector3(0, 0, 0));
-    std::vector<Light*> lights = std::vector<Light*>();
+    PointLight light1 = PointLight(Vector3(10, 10, 10), 1);
+    std::vector<PointLight*> lights = std::vector<PointLight*>();
     lights.push_back(&light1);
 
-    size_t anglex = 90;
-    size_t angley = 80;
+
+    double anglex = 90;
+    double angley = 60;
+
     double zmin = 10;
     Vector3 location = Vector3(0, 0, 0);
     Vector3 targetv = Vector3(1, 0, 0);
@@ -34,8 +37,8 @@ int main()
     targetv = targetv.normalize();
     upvector = upvector.normalize();
     Vector3 leftv = targetv.cross(upvector).normalize();
-    double halfscreensizex = std::tan(camera.getAnglex() / 2) * zmin;
-    double halfscreensizey = std::tan(camera.getAngley() / 2) * zmin;
+    double halfscreensizex = std::tan((camera.getAnglex() / 2.0) * (M_PI / 180)) * zmin;
+    double halfscreensizey = std::tan((camera.getAngley() / 2.0) * (M_PI / 180)) * zmin;
 
     Scene scene = Scene(objects, lights, camera);
 
@@ -44,21 +47,20 @@ int main()
 
     Image image = Image(width, height);
 
-
     for (int i = 0; i < height; i++)
     {
         for (int j = 0; j < width; j++)
         {
             Vector3 origin = camera.getLocation();
-            Vector3 screenpoint = origin + camera.getTarget() * zmin;
+            Vector3 screenpoint = origin + (targetv * zmin);
             double wid2 = width / 2;
             double hei2 = height / 2;
-            Vector3 leftpoint = screenpoint + leftv * halfscreensizex * ((j - wid2) / wid2);
-            Vector3 uppoint = leftpoint + upvector * halfscreensizey * ((i - hei2) / hei2);
+            Vector3 leftpoint = screenpoint + (leftv * halfscreensizex * ((j - wid2) / wid2));
+            Vector3 uppoint = leftpoint + (upvector * halfscreensizey * ((i - hei2) / hei2));
             Vector3 direction = uppoint - origin;
             Ray ray = Ray(origin, direction);
             ColorRGB colorRgb = scene.castRay(ray);
-            image.setPixel(j, i, colorRgb);
+            image.setPixel(j, height - i - 1, colorRgb);
         }
     }
 

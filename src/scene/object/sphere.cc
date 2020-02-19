@@ -4,14 +4,10 @@
 
 #include "sphere.hh"
 
-Sphere::Sphere(Vector3 &center, double r) {
+Sphere::Sphere(Vector3 center, double r, TextureMaterial *textureMaterial) {
     this->center_ = center;
     this->r_ = r;
-}
-
-Sphere::Sphere(Vector3 center, double r) {
-    this->center_ = center;
-    this->r_ = r;
+    this->textureMaterial_ = textureMaterial;
 }
 
 std::optional<Vector3> Sphere::intersect(Ray ray) {
@@ -46,8 +42,8 @@ std::optional<Vector3> Sphere::intersect(Ray ray) {
     }
     if (delta > 0)
     {
-        double t1 = (b + std::sqrt(delta)) / (2 * a);
-        double t2 = (b - std::sqrt(delta)) / (2 * a);
+        double t1 = (-b + std::sqrt(delta)) / (2 * a);
+        double t2 = (-b - std::sqrt(delta)) / (2 * a);
         Vector3 firstpoint = Vector3(Pa + Va * t1, Pb + Vb * t1, Pc + Vc * t1);
         Vector3 secondpoint = Vector3(Pa + Va * t2, Pb + Vb * t2, Pc + Vc * t2);
         if (firstpoint.dist(ray.getPoint()) < secondpoint.dist(ray.getPoint())) {
@@ -58,12 +54,18 @@ std::optional<Vector3> Sphere::intersect(Ray ray) {
     return std::nullopt;
 }
 
-bool Sphere::getTexture(Vector3 point) {
-    (void) point;
-    return false;
+double Sphere::getTextureKs(Vector3 point) {
+    return this->textureMaterial_->getTextureKs(point);
 }
 
-bool Sphere::normal(Vector3 point) {
-    (void) point;
-    return false;
+double Sphere::getTextureKd(Vector3 point) {
+    return this->textureMaterial_->getTextureKd(point);
+}
+
+ColorRGB Sphere::getTextureColor(Vector3 point)  {
+    return this->textureMaterial_->getTextureColor(point);
+}
+
+Vector3 Sphere::normal(Vector3 point) {
+    return (point - this->center_);
 }

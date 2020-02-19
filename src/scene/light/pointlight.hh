@@ -9,8 +9,9 @@
 
 class PointLight : public Light {
 public:
-    explicit PointLight(Vector3 position);
+    explicit PointLight(Vector3 position, double intensity);
     Vector3 getPos();
+    double getIntensity();
 private:
     Vector3 position_;
 };

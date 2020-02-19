@@ -8,6 +8,8 @@
 #include <utils/vector3.hh>
 
 class Light {
+protected:
+    double intensity_;
 };
 
 
