@@ -20,7 +20,7 @@ int main()
     std::vector<Object*> objects = std::vector<Object*>();
     objects.push_back(&sphere1);
 
-    PointLight light1 = PointLight(Vector3(20, 20, 0), 1);
+    PointLight light1 = PointLight(Vector3(10, 10, 10), 1);
     std::vector<PointLight*> lights = std::vector<PointLight*>();
     lights.push_back(&light1);
 
@@ -35,8 +35,8 @@ int main()
     targetv = targetv.normalize();
     upvector = upvector.normalize();
     Vector3 leftv = targetv.cross(upvector).normalize();
-    double halfscreensizex = std::tan((camera.getAnglex() / 2) * (M_PI / 180)) * zmin;
-    double halfscreensizey = std::tan((camera.getAngley() / 2) * (M_PI / 180)) * zmin;
+    double halfscreensizex = std::tan((camera.getAnglex() / 2.0) * (M_PI / 180)) * zmin;
+    double halfscreensizey = std::tan((camera.getAngley() / 2.0) * (M_PI / 180)) * zmin;
 
     Scene scene = Scene(objects, lights, camera);
 
@@ -58,7 +58,7 @@ int main()
             Vector3 direction = uppoint - origin;
             Ray ray = Ray(origin, direction);
             ColorRGB colorRgb = scene.castRay(ray);
-            image.setPixel(j, i, colorRgb);
+            image.setPixel(j, height - i - 1, colorRgb);
         }
     }
 

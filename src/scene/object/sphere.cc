@@ -42,8 +42,8 @@ std::optional<Vector3> Sphere::intersect(Ray ray) {
     }
     if (delta > 0)
     {
-        double t1 = (b + std::sqrt(delta)) / (2 * a);
-        double t2 = (b - std::sqrt(delta)) / (2 * a);
+        double t1 = (-b + std::sqrt(delta)) / (2 * a);
+        double t2 = (-b - std::sqrt(delta)) / (2 * a);
         Vector3 firstpoint = Vector3(Pa + Va * t1, Pb + Vb * t1, Pc + Vc * t1);
         Vector3 secondpoint = Vector3(Pa + Va * t2, Pb + Vb * t2, Pc + Vc * t2);
         if (firstpoint.dist(ray.getPoint()) < secondpoint.dist(ray.getPoint())) {
@@ -67,5 +67,5 @@ ColorRGB Sphere::getTextureColor(Vector3 point)  {
 }
 
 Vector3 Sphere::normal(Vector3 point) {
-    return (point - this->center_) / this->r_;
+    return (point - this->center_);
 }
