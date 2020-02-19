@@ -6,6 +6,7 @@
 #define RAYTRACER_COLOR_H
 
 #include <cstddef>
+#include <string>
 
 #define MAX_RGB_INTENSITY 255
 
@@ -13,6 +14,7 @@ class ColorRGB
 {
 public:
     ColorRGB(int r, int g, int b);
+    explicit ColorRGB(const std::string& string);
     ColorRGB() = default;
     int getR();
     int getG();

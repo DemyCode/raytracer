@@ -36,13 +36,20 @@ ColorRGB Scene::castRay(Ray ray) {
         for (auto & light : this->lights_)
         {
             Vector3 lightdir = (light->getPos() - point).normalize();
-            double dotproduct = objres->normal(point).normalize().dot(lightdir);
+            Vector3 normaldir = objres->normal(point).normalize();
+            double dotproduct = normaldir.dot(lightdir);
             newColor = newColor +
                     (objres->getTextureColor(point) *
                     objres->getTextureKd(point) *
                     dotproduct *
                     light->getIntensity());
-            
+            Vector3 reflectdir = ray.getDirection() - normaldir * ray.getDirection().dot(normaldir) * 2;
+            double dotproduct2 = reflectdir.dot(lightdir);
+            newColor = newColor +
+                       ColorRGB("white") *
+                       objres->getTextureKs(point) *
+                       light->getIntensity() *
+                       dotproduct2;
         }
     }
     return newColor;

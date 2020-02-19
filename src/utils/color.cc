@@ -58,3 +58,12 @@ ColorRGB ColorRGB::operator-(ColorRGB colorRgb) const {
             this->g_ + colorRgb.g_ >= 0 ? this->g_ + colorRgb.g_ : 0,
             this->b_ + colorRgb.b_ >= 0 ? this->b_ + colorRgb.b_ : 0);
 }
+
+ColorRGB::ColorRGB(const std::string& string) {
+    if (string == "white")
+    {
+        this->r_ = 32;
+        this->g_ = 32;
+        this->b_ = 32;
+    }
+}
