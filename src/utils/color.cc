@@ -62,9 +62,9 @@ ColorRGB ColorRGB::operator-(ColorRGB colorRgb) const {
 ColorRGB::ColorRGB(const std::string& string) {
     if (string == "white")
     {
-        this->r_ = 32;
-        this->g_ = 32;
-        this->b_ = 32;
+        this->r_ = 255;
+        this->g_ = 255;
+        this->b_ = 255;
     }
     else if (string == "red")
     {
@@ -83,6 +83,12 @@ ColorRGB::ColorRGB(const std::string& string) {
         this->r_ = 0;
         this->g_ = 0;
         this->b_ = 255;
+    }
+    else if (string == "black")
+    {
+        this->r_ = 0;
+        this->g_ = 0;
+        this->b_ = 0;
     }
     else
     {

@@ -16,20 +16,24 @@
 
 int main()
 {
-    auto *shinyred = new UniformTexture(1, 1, ColorRGB("red"));
-    auto *shinyyellow = new UniformTexture(1, 1, ColorRGB("yellow"));
-    auto *shinyblue = new UniformTexture(1, 1, ColorRGB("blue"));
-    Sphere sphere1 = Sphere(Vector3(20, 10, -10),5, shinyred);
-    Sphere sphere2 = Sphere(Vector3(20, 10, 10),5, shinyyellow);
-    // Plane plane = Plane(Vector3(0, 0, 0), Vector3(0, 0, 1), Vector3(1, 0, 0), shinyblue);
+    auto *shinyred = new UniformTexture(0.05, 1, ColorRGB("red"));
+    auto *shinyyellow = new UniformTexture(0.1, 1, ColorRGB("yellow"));
+    auto *shinyblue = new UniformTexture(0.05, 1, ColorRGB("blue"));
+    Sphere sphere1 = Sphere(Vector3(50, 10, -20), 5, shinyred);
+    Sphere sphere2 = Sphere(Vector3(50, 10, 0), 5, shinyyellow);
+    Sphere sphere3 = Sphere(Vector3(50, 10, 20), 5, shinyblue);
+    Plane plane = Plane(Vector3(0, 0, 0), Vector3(0, 0, 1), Vector3(1, 0, 0), shinyyellow);
     std::vector<Object*> objects = std::vector<Object*>();
     objects.push_back(&sphere1);
     objects.push_back(&sphere2);
-    // objects.push_back(&plane);
+    objects.push_back(&sphere3);
+    objects.push_back(&plane);
 
-    PointLight light1 = PointLight(Vector3(10, 30, 0), 1);
+    //PointLight light1 = PointLight(Vector3(0, 30, 30), 1, ColorRGB("white"));
+    PointLight light2 = PointLight(Vector3(50, 40, 0), 1, ColorRGB("white"));
     std::vector<PointLight*> lights = std::vector<PointLight*>();
-    lights.push_back(&light1);
+    //lights.push_back(&light1);
+    lights.push_back(&light2);
 
     double anglex = 90;
     double angley = 60;
@@ -48,8 +52,8 @@ int main()
 
     Scene scene = Scene(objects, lights, camera);
 
-    int width = 1366;
-    int height = 768;
+    int width = 1920;
+    int height = 1080;
 
     Image image = Image(width, height);
 
@@ -65,7 +69,8 @@ int main()
             Vector3 uppoint = leftpoint + (upvector * halfscreensizey * ((i - hei2) / hei2));
             Vector3 direction = uppoint - origin;
             Ray ray = Ray(origin, direction);
-            ColorRGB colorRgb = scene.castRay(ray);
+            int bounces = 1;
+            ColorRGB colorRgb = scene.castRay(ray, location, uppoint, bounces);
             image.setPixel(j, height - i - 1, colorRgb);
         }
     }

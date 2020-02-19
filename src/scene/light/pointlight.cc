@@ -5,16 +5,12 @@
 #include "pointlight.hh"
 
 
-PointLight::PointLight(Vector3 position, double intensity) {
+PointLight::PointLight(Vector3 position, double intensity, ColorRGB colorRgb) {
     this->position_ = position;
     this->intensity_ = intensity;
+    this->colorRgb_ = colorRgb;
 }
 
 Vector3 PointLight::getPos() {
     return this->position_;
-}
-
-double PointLight::getIntensity()
-{
-    return this->intensity_;
 }

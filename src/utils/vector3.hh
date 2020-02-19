@@ -24,14 +24,15 @@ public:
     Vector3 cross(const Vector3& v) const;
     double norm() const;
     Vector3 normalize() const;
-
+    bool equal(const Vector3 &v, int precision) const;
     friend std::ostream& operator<<(std::ostream &out, const Vector3 &vect);
+
     double getX();
     double getY();
-
     double getZ();
 private:
     double x_;
+
     double y_;
 
     double z_;

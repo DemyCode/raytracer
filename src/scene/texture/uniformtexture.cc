@@ -13,12 +13,12 @@ UniformTexture::UniformTexture(double ks, double kd, ColorRGB rgb) {
 
 double UniformTexture::getTextureKs(Vector3 point) {
     (void) point;
-    return this->kd_;
+    return this->ks_;
 }
 
 double UniformTexture::getTextureKd(Vector3 point) {
     (void) point;
-    return this->ks_;
+    return this->kd_;
 }
 
 ColorRGB UniformTexture::getTextureColor(Vector3 point) {

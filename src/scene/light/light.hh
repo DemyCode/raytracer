@@ -6,10 +6,15 @@
 #define RAYTRACER_LIGHT_HH
 
 #include <utils/vector3.hh>
+#include <utils/color.hh>
 
 class Light {
+public:
+    double getIntensity();
+    ColorRGB getColorRgb();
 protected:
     double intensity_;
+    ColorRGB colorRgb_;
 };
 
 
