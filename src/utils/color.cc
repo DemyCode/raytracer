@@ -66,4 +66,28 @@ ColorRGB::ColorRGB(const std::string& string) {
         this->g_ = 32;
         this->b_ = 32;
     }
+    else if (string == "red")
+    {
+        this->r_ = 255;
+        this->g_ = 0;
+        this->b_ = 0;
+    }
+    else if (string == "yellow")
+    {
+        this->r_ = 255;
+        this->g_ = 255;
+        this->b_ = 0;
+    }
+    else if (string == "blue")
+    {
+        this->r_ = 0;
+        this->g_ = 0;
+        this->b_ = 255;
+    }
+    else
+    {
+        this->r_ = 0;
+        this->g_ = 0;
+        this->b_ = 0;
+    }
 }

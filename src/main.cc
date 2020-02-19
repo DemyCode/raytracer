@@ -11,25 +11,31 @@
 #include <scene/object/sphere.hh>
 #include <scene//light/pointlight.hh>
 #include <utils/image.hh>
+#include <scene/object/plane.hh>
 
 
 int main()
 {
-    auto *shinyred = new UniformTexture(1, 1, ColorRGB(255, 0, 0));
-    Sphere sphere1 = Sphere(Vector3(20, 0, 0),5, shinyred);
+    auto *shinyred = new UniformTexture(1, 1, ColorRGB("red"));
+    auto *shinyyellow = new UniformTexture(1, 1, ColorRGB("yellow"));
+    auto *shinyblue = new UniformTexture(1, 1, ColorRGB("blue"));
+    Sphere sphere1 = Sphere(Vector3(20, 10, -10),5, shinyred);
+    Sphere sphere2 = Sphere(Vector3(20, 10, 10),5, shinyyellow);
+    // Plane plane = Plane(Vector3(0, 0, 0), Vector3(0, 0, 1), Vector3(1, 0, 0), shinyblue);
     std::vector<Object*> objects = std::vector<Object*>();
     objects.push_back(&sphere1);
+    objects.push_back(&sphere2);
+    // objects.push_back(&plane);
 
-    PointLight light1 = PointLight(Vector3(10, 10, 10), 1);
+    PointLight light1 = PointLight(Vector3(10, 30, 0), 1);
     std::vector<PointLight*> lights = std::vector<PointLight*>();
     lights.push_back(&light1);
-
 
     double anglex = 90;
     double angley = 60;
 
     double zmin = 10;
-    Vector3 location = Vector3(0, 0, 0);
+    Vector3 location = Vector3(0, 10, 0);
     Vector3 targetv = Vector3(1, 0, 0);
     Vector3 upvector = Vector3(0, 1, 0);
     Camera camera = Camera(location, targetv, upvector, anglex, angley, zmin);
