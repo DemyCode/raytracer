@@ -15,6 +15,7 @@ public:
     virtual double getTextureKs(Vector3 point) = 0;
     virtual double getTextureKd(Vector3 point) = 0;
     virtual ColorRGB getTextureColor(Vector3 point) = 0;
+    virtual double getTextureNs(Vector3 point) = 0;
 };
 
 

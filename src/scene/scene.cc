@@ -69,7 +69,7 @@ ColorRGB Scene::castRay(Ray ray, Vector3 origin, Vector3 screen, int bounces) {
                             light->getIntensity());
 
                 Vector3 reflectdir = ray.getDirection() - normaldir * ray.getDirection().dot(normaldir) * 2;
-                double dotproduct2 = reflectdir.dot(lightdir);
+                double dotproduct2 = std::pow(reflectdir.dot(lightdir), objres->getTextureNs(pointresult));
                 newColor = newColor +
                            light->getColorRgb() * objres->getTextureKs(pointresult) *
                            light->getIntensity() *

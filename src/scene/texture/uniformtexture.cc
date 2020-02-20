@@ -5,10 +5,11 @@
 #include "uniformtexture.hh"
 
 
-UniformTexture::UniformTexture(double ks, double kd, ColorRGB rgb) {
+UniformTexture::UniformTexture(double ks, double kd, ColorRGB rgb, int ns) {
     this->ks_ = ks;
     this->kd_ = kd;
     this->rgb_ = rgb;
+    this->ns_ = ns;
 }
 
 double UniformTexture::getTextureKs(Vector3 point) {
@@ -24,4 +25,9 @@ double UniformTexture::getTextureKd(Vector3 point) {
 ColorRGB UniformTexture::getTextureColor(Vector3 point) {
     (void) point;
     return this->rgb_;
+}
+
+double UniformTexture::getTextureNs(Vector3 point) {
+    (void) point;
+    return this->ns_;
 }

@@ -16,9 +16,9 @@
 
 int main()
 {
-    auto *shinyred = new UniformTexture(0.05, 1, ColorRGB("red"));
-    auto *shinyyellow = new UniformTexture(0.1, 1, ColorRGB("yellow"));
-    auto *shinyblue = new UniformTexture(0.05, 1, ColorRGB("blue"));
+    auto *shinyred = new UniformTexture(0.05, 1, ColorRGB("red"), 1);
+    auto *shinyyellow = new UniformTexture(0.05, 1, ColorRGB("yellow"), 1);
+    auto *shinyblue = new UniformTexture(0.05, 1, ColorRGB("blue"), 1);
     Sphere sphere1 = Sphere(Vector3(50, 10, -20), 5, shinyred);
     Sphere sphere2 = Sphere(Vector3(50, 10, 0), 5, shinyyellow);
     Sphere sphere3 = Sphere(Vector3(50, 10, 20), 5, shinyblue);
@@ -69,7 +69,7 @@ int main()
             Vector3 uppoint = leftpoint + (upvector * halfscreensizey * ((i - hei2) / hei2));
             Vector3 direction = uppoint - origin;
             Ray ray = Ray(origin, direction);
-            int bounces = 2;
+            int bounces = 1;
             ColorRGB colorRgb = scene.castRay(ray, location, uppoint, bounces);
             image.setPixel(j, height - i - 1, colorRgb);
         }

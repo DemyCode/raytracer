@@ -54,18 +54,6 @@ std::optional<Vector3> Sphere::intersect(Ray ray) {
     return std::nullopt;
 }
 
-double Sphere::getTextureKs(Vector3 point) {
-    return this->textureMaterial_->getTextureKs(point);
-}
-
-double Sphere::getTextureKd(Vector3 point) {
-    return this->textureMaterial_->getTextureKd(point);
-}
-
-ColorRGB Sphere::getTextureColor(Vector3 point)  {
-    return this->textureMaterial_->getTextureColor(point);
-}
-
 Vector3 Sphere::normal(Vector3 point) {
     return (point - this->center_);
 }

@@ -43,15 +43,3 @@ Vector3 Plane::normal(Vector3 point) {
     (void) point;
     return (this->b_ - this->a_).cross(this->c_ - this->a_);
 }
-
-double Plane::getTextureKs(Vector3 point) {
-    return this->textureMaterial_->getTextureKs(point);
-}
-
-double Plane::getTextureKd(Vector3 point) {
-    return this->textureMaterial_->getTextureKd(point);
-}
-
-ColorRGB Plane::getTextureColor(Vector3 point) {
-    return this->textureMaterial_->getTextureColor(point);
-}

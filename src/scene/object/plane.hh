@@ -13,10 +13,6 @@ public:
     Plane(Vector3 a, Vector3 b, Vector3 c, TextureMaterial* textureMaterial);
     std::optional<Vector3> intersect(Ray ray) override;
     Vector3 normal(Vector3 point) override;
-    double getTextureKs(Vector3 point) override;
-    double getTextureKd(Vector3 point) override;
-    ColorRGB getTextureColor(Vector3 point) override;
-
 private:
     Vector3 a_;
     Vector3 b_;

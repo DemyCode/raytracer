@@ -15,10 +15,6 @@ public:
     Sphere(Vector3 center, double r, TextureMaterial *textureMaterial);
     Sphere(Sphere const &) = default;
     Sphere() = default;
-    double getTextureKs(Vector3 point) override;
-    double getTextureKd(Vector3 point) override;
-    ColorRGB getTextureColor(Vector3 point) override;
-
     std::optional<Vector3> intersect(Ray ray) override;
     Vector3 normal(Vector3 point) override;
 private:
