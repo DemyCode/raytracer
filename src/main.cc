@@ -69,7 +69,7 @@ int main()
             Vector3 uppoint = leftpoint + (upvector * halfscreensizey * ((i - hei2) / hei2));
             Vector3 direction = uppoint - origin;
             Ray ray = Ray(origin, direction);
-            int bounces = 1;
+            int bounces = 2;
             ColorRGB colorRgb = scene.castRay(ray, location, uppoint, bounces);
             image.setPixel(j, height - i - 1, colorRgb);
         }
