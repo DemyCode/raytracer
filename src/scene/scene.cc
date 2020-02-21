@@ -10,13 +10,13 @@ Scene::Scene(std::vector<Object*> objects, std::vector<PointLight*> lights, Came
     this->camera_ = camera;
 }
 
-std::optional<std::tuple<Vector3, Object*>> Scene::trace(Ray ray)
+std::optional<std::tuple<Vector3, Object*>> Scene::trace(Ray ray, double maxdistance)
 {
     double epsilon = 0.001;
     ray.setPoint(ray.getPoint() + ray.getDirection() * epsilon);
     std::optional<Vector3> pointresult = std::nullopt;
     Object* objres = nullptr;
-    double dist = 999999999999;
+    double dist = std::numeric_limits<double>::infinity();
     for (auto & object : this->objects_)
     {
         std::optional<Vector3> var = object->intersect(ray);
@@ -25,7 +25,7 @@ std::optional<std::tuple<Vector3, Object*>> Scene::trace(Ray ray)
             double newdist = var->dist(ray.getPoint());
             Vector3 origintovar = (var.value() - ray.getPoint()).normalize();
             double same = ray.getDirection().normalize().dot(origintovar);
-            if (newdist < dist && 0.9 <= same && same <= 1.1)
+            if (newdist < dist && 0.9 <= same && same <= 1.1 && (maxdistance == -1 || newdist < maxdistance))
             {
                 pointresult = var;
                 dist = newdist;
@@ -43,7 +43,7 @@ ColorRGB Scene::castRay(Ray ray, int bounces) {
         return ColorRGB("black");
 
     ColorRGB newColor = ColorRGB(0, 0, 0);
-    std::optional<std::tuple<Vector3, Object*>> tuple = this->trace(ray);
+    std::optional<std::tuple<Vector3, Object*>> tuple = this->trace(ray, -1);
 
     if (tuple)
     {
@@ -52,12 +52,8 @@ ColorRGB Scene::castRay(Ray ray, int bounces) {
         for (auto & light : this->lights_)
         {
             Vector3 lightdir = (light->getPos() - pointresult).normalize();
-            std::optional<std::tuple<Vector3, Object*>> shadow = this->trace(Ray(pointresult, lightdir));
-            if (shadow)
-            {
-                newColor = ColorRGB("black");
-            }
-            else
+            std::optional<std::tuple<Vector3, Object*>> shadow = this->trace(Ray(pointresult, lightdir), pointresult.dist(light->getPos()));
+            if (!shadow)
             {
                 Vector3 normaldir = objres->normal(pointresult).normalize();
                 double dotproduct = normaldir.dot(lightdir);

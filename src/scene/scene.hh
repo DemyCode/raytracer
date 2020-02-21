@@ -26,7 +26,7 @@ private:
     std::vector<PointLight*> lights_;
     Camera camera_;
 
-    std::optional<std::tuple<Vector3, Object *>> trace(Ray ray);
+    std::optional<std::tuple<Vector3, Object *>> trace(Ray ray, double maxdistance);
 };
 
 

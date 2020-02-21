@@ -20,16 +20,16 @@ std::optional<Vector3> Plane::intersect(Ray ray) {
 //        return ray.getPoint() + ray.getDirection() * t;
 //    }
 //    return std::nullopt;
-    
-    Vector3 AB = this->b_ - this->a_;
-    Vector3 AC = this->c_ - this->a_;
-    Vector3 crossed = AB.cross(AC);
+
+//    Vector3 AB = this->b_ - this->a_;
+//    Vector3 AC = this->c_ - this->a_;
+    Vector3 crossed = this->normal_;
     double A = crossed.getX();
     double B = crossed.getY();
     double C = crossed.getZ();
-    double x0 = a_.getX();
-    double y0 = a_.getY();
-    double z0 = a_.getZ();
+    double x0 = this->point_.getX();
+    double y0 = this->point_.getY();
+    double z0 = this->point_.getZ();
     double Vx = ray.getDirection().getX();
     double Vy = ray.getDirection().getY();
     double Vz = ray.getDirection().getZ();

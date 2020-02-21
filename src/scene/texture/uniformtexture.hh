@@ -25,3 +25,4 @@ private:
 
 
 #endif //RAYTRACER_UNIFORMTEXTURE_HH
+
