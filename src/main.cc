@@ -16,13 +16,14 @@
 
 int main()
 {
-    auto *shinyred = new UniformTexture(0.05, 1, ColorRGB("red"), 1);
-    auto *shinyyellow = new UniformTexture(0.05, 1, ColorRGB("yellow"), 1);
-    auto *shinyblue = new UniformTexture(0.05, 1, ColorRGB("blue"), 1);
+    auto *shinyred = new UniformTexture(0.25, 1, ColorRGB("red"), 1);
+    auto *shinyyellow = new UniformTexture(0.5, 1, ColorRGB("yellow"), 1);
+    auto *shinyblue = new UniformTexture(0.75, 1, ColorRGB("blue"), 1);
+    auto *shinygreen = new UniformTexture(0.1, 1, ColorRGB("green"), 1);
     Sphere sphere1 = Sphere(Vector3(50, 10, -20), 5, shinyred);
-    Sphere sphere2 = Sphere(Vector3(50, 10, 0), 5, shinyyellow);
+    Sphere sphere2 = Sphere(Vector3(50, 10, 0), 5, shinygreen);
     Sphere sphere3 = Sphere(Vector3(50, 10, 20), 5, shinyblue);
-    Plane plane = Plane(Vector3(0, 0, 0), Vector3(0, 0, 1), Vector3(1, 0, 0), shinyyellow);
+    Plane plane = Plane(Vector3(0, 0, 0), Vector3(0, 0, 1), Vector3(1, 0, 0), Vector3(0, 1, 0), shinyyellow);
     std::vector<Object*> objects = std::vector<Object*>();
     objects.push_back(&sphere1);
     objects.push_back(&sphere2);
@@ -69,8 +70,8 @@ int main()
             Vector3 uppoint = leftpoint + (upvector * halfscreensizey * ((i - hei2) / hei2));
             Vector3 direction = uppoint - origin;
             Ray ray = Ray(origin, direction);
-            int bounces = 1;
-            ColorRGB colorRgb = scene.castRay(ray, location, uppoint, bounces);
+            int bounces = 2;
+            ColorRGB colorRgb = scene.castRay(ray, bounces);
             image.setPixel(j, height - i - 1, colorRgb);
         }
     }

@@ -20,13 +20,13 @@ public:
     std::vector<Object*> getObjects(){ return this->objects_; }
     std::vector<PointLight*> getLights(){ return this->lights_; }
     Camera getCamera(){ return this->camera_; }
-    ColorRGB castRay(Ray ray, Vector3 origin, Vector3 point, int bounces);
+    ColorRGB castRay(Ray ray, int bounces);
 private:
     std::vector<Object*> objects_;
     std::vector<PointLight*> lights_;
     Camera camera_;
 
-    std::optional<std::tuple<Vector3, Object *>> trace(Ray ray, Vector3 origin, Vector3 screen);
+    std::optional<std::tuple<Vector3, Object *>> trace(Ray ray);
 };
 
 

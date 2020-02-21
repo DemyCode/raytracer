@@ -10,10 +10,10 @@ Scene::Scene(std::vector<Object*> objects, std::vector<PointLight*> lights, Came
     this->camera_ = camera;
 }
 
-std::optional<std::tuple<Vector3, Object*>> Scene::trace(Ray ray, Vector3 origin, Vector3 screen)
+std::optional<std::tuple<Vector3, Object*>> Scene::trace(Ray ray)
 {
-    double epsilon = 0.01;
-    origin = origin + ray.getDirection().normalize() * epsilon;
+    double epsilon = 0.001;
+    ray.setPoint(ray.getPoint() + ray.getDirection() * epsilon);
     std::optional<Vector3> pointresult = std::nullopt;
     Object* objres = nullptr;
     double dist = 999999999999;
@@ -23,9 +23,8 @@ std::optional<std::tuple<Vector3, Object*>> Scene::trace(Ray ray, Vector3 origin
         if (var)
         {
             double newdist = var->dist(ray.getPoint());
-            Vector3 OriginScreen = (screen - origin).normalize();
-            Vector3 ScreenPoint = (var.value() - screen).normalize();
-            double same = OriginScreen.dot(ScreenPoint);
+            Vector3 origintovar = (var.value() - ray.getPoint()).normalize();
+            double same = ray.getDirection().normalize().dot(origintovar);
             if (newdist < dist && 0.9 <= same && same <= 1.1)
             {
                 pointresult = var;
@@ -39,12 +38,12 @@ std::optional<std::tuple<Vector3, Object*>> Scene::trace(Ray ray, Vector3 origin
     return std::nullopt;
 }
 
-ColorRGB Scene::castRay(Ray ray, Vector3 origin, Vector3 screen, int bounces) {
+ColorRGB Scene::castRay(Ray ray, int bounces) {
     if (bounces == 0)
         return ColorRGB("black");
 
     ColorRGB newColor = ColorRGB(0, 0, 0);
-    std::optional<std::tuple<Vector3, Object*>> tuple = this->trace(ray, origin, screen);
+    std::optional<std::tuple<Vector3, Object*>> tuple = this->trace(ray);
 
     if (tuple)
     {
@@ -53,7 +52,7 @@ ColorRGB Scene::castRay(Ray ray, Vector3 origin, Vector3 screen, int bounces) {
         for (auto & light : this->lights_)
         {
             Vector3 lightdir = (light->getPos() - pointresult).normalize();
-            std::optional<std::tuple<Vector3, Object*>> shadow = this->trace(Ray(pointresult, lightdir), pointresult, pointresult + lightdir);
+            std::optional<std::tuple<Vector3, Object*>> shadow = this->trace(Ray(pointresult, lightdir));
             if (shadow)
             {
                 newColor = ColorRGB("black");
@@ -76,7 +75,7 @@ ColorRGB Scene::castRay(Ray ray, Vector3 origin, Vector3 screen, int bounces) {
                            dotproduct2;
 
                 newColor = newColor +
-                           castRay(Ray(pointresult, reflectdir), pointresult, pointresult + reflectdir, bounces - 1) * objres->getTextureKs(pointresult);
+                           castRay(Ray(pointresult, reflectdir), bounces - 1) * objres->getTextureKs(pointresult);
             }
         }
     }

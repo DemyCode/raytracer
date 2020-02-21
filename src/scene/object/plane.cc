@@ -4,11 +4,12 @@
 
 #include "plane.hh"
 
-Plane::Plane(Vector3 a, Vector3 b, Vector3 c, TextureMaterial* textureMaterial)
+Plane::Plane(Vector3 a, Vector3 b, Vector3 c, Vector3 normal, TextureMaterial* textureMaterial)
 {
     this->a_ = a;
     this->b_ = b;
     this->c_ = c;
+    this->normal_ = normal;
     this->textureMaterial_ = textureMaterial;
 }
 
@@ -41,5 +42,6 @@ std::optional<Vector3> Plane::intersect(Ray ray) {
 
 Vector3 Plane::normal(Vector3 point) {
     (void) point;
-    return (this->b_ - this->a_).cross(this->c_ - this->a_);
+    //return (this->b_ - this->a_).cross(this->c_ - this->a_);
+    return this->normal_;
 }
