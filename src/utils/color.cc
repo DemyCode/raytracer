@@ -84,13 +84,13 @@ ColorRGB::ColorRGB(const std::string& string) {
         this->g_ = 0;
         this->b_ = 255;
     }
-    else if (string == "black")
+    else if (string == "green")
     {
         this->r_ = 0;
-        this->g_ = 0;
+        this->g_ = 255;
         this->b_ = 0;
     }
-    else
+    else if (string == "black")
     {
         this->r_ = 0;
         this->g_ = 0;

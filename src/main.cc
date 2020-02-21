@@ -20,15 +20,18 @@ int main()
     auto *shinyyellow = new UniformTexture(0.5, 1, ColorRGB("yellow"), 1);
     auto *shinyblue = new UniformTexture(0.75, 1, ColorRGB("blue"), 1);
     auto *shinygreen = new UniformTexture(0.1, 1, ColorRGB("green"), 1);
+    //auto *shinywhite = new UniformTexture(0.1, 1, ColorRGB("white"), 1);
     Sphere sphere1 = Sphere(Vector3(50, 10, -20), 5, shinyred);
     Sphere sphere2 = Sphere(Vector3(50, 10, 0), 5, shinygreen);
     Sphere sphere3 = Sphere(Vector3(50, 10, 20), 5, shinyblue);
-    Plane plane = Plane(Vector3(0, 0, 0), Vector3(0, 0, 1), Vector3(1, 0, 0), Vector3(0, 1, 0), shinyyellow);
+    Plane plane = Plane(Vector3(0, 0, 0), Vector3(0, 1, 0), shinyyellow);
+    //Plane plane2 = Plane(Vector3(10, 0, 10), Vector3(10, 0, -10), Vector3(10, 10, 0), Vector3(-1, 0, 0), shinywhite);
     std::vector<Object*> objects = std::vector<Object*>();
     objects.push_back(&sphere1);
     objects.push_back(&sphere2);
     objects.push_back(&sphere3);
     objects.push_back(&plane);
+    //objects.push_back(&plane2);
 
     //PointLight light1 = PointLight(Vector3(0, 30, 30), 1, ColorRGB("white"));
     PointLight light2 = PointLight(Vector3(50, 40, 0), 1, ColorRGB("white"));

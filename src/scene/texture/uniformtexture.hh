@@ -10,7 +10,7 @@
 
 class UniformTexture : public TextureMaterial {
 public:
-    UniformTexture(double ks, double kd, ColorRGB rgb, int ns);
+    UniformTexture(double ks, double kd, ColorRGB rgb, double ns);
     double getTextureKs(Vector3 point) override;
     double getTextureKd(Vector3 point) override;
     ColorRGB getTextureColor(Vector3 point) override;
@@ -20,7 +20,7 @@ private:
     double ks_;
     double kd_;
     ColorRGB rgb_;
-    int ns_;
+    double ns_;
 };
 
 

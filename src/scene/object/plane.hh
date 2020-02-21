@@ -10,13 +10,11 @@
 
 class Plane : public Object {
 public:
-    Plane(Vector3 a, Vector3 b, Vector3 c, Vector3 normal, TextureMaterial* textureMaterial);
+    Plane(Vector3 point, Vector3 normal, TextureMaterial* textureMaterial);
     std::optional<Vector3> intersect(Ray ray) override;
     Vector3 normal(Vector3 point) override;
 private:
-    Vector3 a_;
-    Vector3 b_;
-    Vector3 c_;
+    Vector3 point_;
     Vector3 normal_;
 };
 

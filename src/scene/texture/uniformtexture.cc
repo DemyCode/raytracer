@@ -5,7 +5,7 @@
 #include "uniformtexture.hh"
 
 
-UniformTexture::UniformTexture(double ks, double kd, ColorRGB rgb, int ns) {
+UniformTexture::UniformTexture(double ks, double kd, ColorRGB rgb, double ns) {
     this->ks_ = ks;
     this->kd_ = kd;
     this->rgb_ = rgb;

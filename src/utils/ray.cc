@@ -6,7 +6,7 @@
 
 Ray::Ray(Vector3 point, Vector3 direction) {
     this->point_ = point;
-    this->direction_ = direction;
+    this->direction_ = direction.normalize();
 }
 
 Vector3 Ray::getPoint() {

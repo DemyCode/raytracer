@@ -4,16 +4,23 @@
 
 #include "plane.hh"
 
-Plane::Plane(Vector3 a, Vector3 b, Vector3 c, Vector3 normal, TextureMaterial* textureMaterial)
+Plane::Plane(Vector3 point, Vector3 normal, TextureMaterial* textureMaterial)
 {
-    this->a_ = a;
-    this->b_ = b;
-    this->c_ = c;
-    this->normal_ = normal;
+    this->point_ = point;
+    this->normal_ = normal.normalize();
     this->textureMaterial_ = textureMaterial;
 }
 
 std::optional<Vector3> Plane::intersect(Ray ray) {
+//    double denom = this->normal_.dot(ray.getDirection());
+//    if (denom > 1e-6)
+//    {
+//        Vector3 p0l0 = this->point_ - ray.getPoint();
+//        double t = p0l0.dot(this->normal_) / denom;
+//        return ray.getPoint() + ray.getDirection() * t;
+//    }
+//    return std::nullopt;
+    
     Vector3 AB = this->b_ - this->a_;
     Vector3 AC = this->c_ - this->a_;
     Vector3 crossed = AB.cross(AC);
