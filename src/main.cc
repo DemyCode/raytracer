@@ -8,30 +8,30 @@
 #include <utils/vector3.hh>
 #include <scene/scene.hh>
 #include <scene/object/object.hh>
-#include <scene/object/sphere.hh>
 #include <scene/light/pointlight.hh>
 #include <utils/image.hh>
-#include <scene/object/plane.hh>
-#include <scene/object/triangle.hh>
 #include <utils/parser/parser.hh>
+#include <scene/object/plane.hh>
+#include <scene/object/sphere.hh>
+#include <scene/object/triangle.hh>
 
 
 int main()
 {
 //    auto *shinyred = new UniformTexture(0.2, 1, ColorRGB("red"), 1);
 //    auto *shinygreen = new UniformTexture(0.2, 1, ColorRGB("green"), 1);
-//    auto *shinyblue = new UniformTexture(0.2, 1, ColorRGB("blue"), 1);
+    //auto *shinyblue = new UniformTexture(0.2, 1, ColorRGB("blue"), 1);
 //    auto *shinywhite = new UniformTexture(0.2, 1, ColorRGB("white"), 1);
-    auto *shinyblue = new UniformTexture(0.2, 1, ColorRGB("blue"), 1);
-    auto *mirror = new UniformTexture(1.0, 0, ColorRGB("white"), 5);
+//    auto *shinyblue = new UniformTexture(0.2, 1, ColorRGB("blue"), 1);
+//    auto *mirror = new UniformTexture(1.0, 0, ColorRGB("white"), 5);
 //    Sphere sphere1 = Sphere(Vector3(50, 10, 0), 5, mirror);
 //    Sphere sphere2 = Sphere(Vector3(50, 10, 20), 5, mirror);
 //    Sphere sphere3 = Sphere(Vector3(50, 10, -20), 5, mirror);
 //    Plane plane = Plane(Vector3(0, 0, -20), Vector3(0, 0, 1), shinywhite);
 //    Plane plane2 = Plane(Vector3(0, 0, 20), Vector3(0, 0, -1), shinywhite);
-    Plane plane3 = Plane(Vector3(100, 0, 0), Vector3(-1, 0, 0), mirror);
-    Plane plane4 = Plane(Vector3(0, 0, 0), Vector3(0, 1, 0), shinyblue);
-    Parser parser = Parser("../objects/cube.obj");
+    //Plane plane3 = Plane(Vector3(100, 0, 0), Vector3(-1, 0, 0), mirror);
+    //Plane plane4 = Plane(Vector3(0, -20, 0), Vector3(0, 1, 0), shinyblue);
+    Parser parser = Parser("../objects/teapot.obj");
     std::vector<Triangle*> triangles = parser.getTriangles();
 
 //    Plane plane5 = Plane(Vector3(0, 20, 0), Vector3(0, -1, 0), shinywhite);
@@ -43,13 +43,13 @@ int main()
 //    objects.push_back(&sphere3);
 //    objects.push_back(&plane);
 //    objects.push_back(&plane2);
-    objects.push_back(&plane3);
-    objects.push_back(&plane4);
+    //objects.push_back(&plane3);
+    //objects.push_back(&plane4);
 //    objects.push_back(&plane5);
     objects.insert(objects.end(), triangles.begin(), triangles.end());
 
 //    PointLight light1 = PointLight(Vector3(30, 30, 10), 1, ColorRGB("white"));
-    PointLight light2 = PointLight(Vector3(10, 30, 10), 1, ColorRGB("white"));
+    PointLight light2 = PointLight(Vector3(-500, 100, 100), 1, ColorRGB("white"));
 //    PointLight light1 = PointLight(Vector3(75, 10, 10), 1, ColorRGB("blue"));
     std::vector<PointLight*> lights = std::vector<PointLight*>();
 //    lights.push_back(&light1);
@@ -60,7 +60,7 @@ int main()
     int bounces = 1;
 
     double zmin = 10;
-    Vector3 location = Vector3(0, 10, 0);
+    Vector3 location = Vector3(-500, 30, 0);
     Vector3 targetv = Vector3(1, 0, 0);
     Vector3 upvector = Vector3(0, 1, 0);
     Camera camera = Camera(location, targetv, upvector, anglex, angley, zmin);

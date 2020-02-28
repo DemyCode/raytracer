@@ -6,8 +6,9 @@
 #define RAYTRACER_TRIANGLE_HH
 
 
+#include <scene/object/object.hh>
 #include <utils/vertex.hh>
-#include "object.hh"
+#include <scene/texture/texturematerial.hh>
 
 class Triangle : public Object {
 public:

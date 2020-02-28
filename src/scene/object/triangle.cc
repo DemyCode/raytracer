@@ -59,5 +59,11 @@ bool Triangle::sameside(Vector3 a, Vector3 b, Vector3 c, Vector3 point)
 Vector3 Triangle::normal(Vector3 point)
 {
     (void) point;
-    return this->a_.getNormal().value();
+    if (this->a_.getNormal())
+        return this->a_.getNormal().value();
+    if (this->b_.getNormal())
+        return this->b_.getNormal().value();
+    if (this->c_.getNormal())
+        return this->c_.getNormal().value();
+    return (this->a_ - this->b_).cross(this->a_ - this->c_);
 }

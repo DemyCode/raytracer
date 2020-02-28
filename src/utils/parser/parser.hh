@@ -10,7 +10,9 @@
 #include <utils/vertex.hh>
 #include <scene/texture/uniformtexture.hh>
 #include <scene/object/triangle.hh>
-
+#include <string>
+#include <scene/object/object.hh>
+#include <scene/texture/uniformtexture.hh>
 
 class Parser {
 public:

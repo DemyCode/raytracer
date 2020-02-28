@@ -7,10 +7,11 @@
 
 
 #include <optional>
-#include "vector3.hh"
+#include <utils/vector3.hh>
 
 class Vertex : public Vector3{
 public:
+    Vertex(Vector3 v, std::optional<Vector3> normal);
     Vertex() = default;
     Vertex(double x, double y, double z, std::optional<Vector3> normal);
     std::optional<Vector3> getNormal();

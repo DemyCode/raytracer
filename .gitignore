@@ -37,3 +37,6 @@
 # build
 cmake-build-debug
 objects
+
+# images
+*.ppm

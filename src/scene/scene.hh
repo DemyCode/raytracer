@@ -5,13 +5,13 @@
 #ifndef RAYTRACER_SCENE_HH
 #define RAYTRACER_SCENE_HH
 
+#include <optional>
 #include <vector>
 
 #include <scene/object/object.hh>
 #include <scene/light/light.hh>
 #include <scene/camera.hh>
 #include <utils/color.hh>
-#include <optional>
 #include <scene/light/pointlight.hh>
 
 class Scene {

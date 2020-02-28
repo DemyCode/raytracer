@@ -7,7 +7,7 @@
 
 #include <scene/texture/uniformtexture.hh>
 
-#include "object.hh"
+#include <scene/object/object.hh>
 
 class Sphere : public Object
 {

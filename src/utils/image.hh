@@ -10,7 +10,7 @@
 #include <fstream>
 #include <string>
 
-#include "color.hh"
+#include <utils/color.hh>
 
 class Image {
 public:
