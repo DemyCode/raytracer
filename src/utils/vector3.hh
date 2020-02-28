@@ -30,11 +30,10 @@ public:
     double getX();
     double getY();
     double getZ();
-private:
+
+protected:
     double x_;
-
     double y_;
-
     double z_;
 };
 

@@ -1,9 +1,9 @@
 #MAKE
 
-# add_subdirectory(polygon)
+add_subdirectory(parser)
 
 set(utils_src
-        vector3.cc
+        vector3.cc vertex.cc
         color.cc
         image.cc
         ray.cc)
