@@ -10,7 +10,7 @@
 
 class Triangle : public Object {
 public:
-    Triangle(Vector3 a, Vector3 b, Vector3 c, Vector3 normal, TextureMaterial *textureMaterial);
+    Triangle(Vector3 a, Vector3 b, Vector3 c, Vector3 an, Vector3 bn, Vector3 cn, TextureMaterial *textureMaterial);
     std::optional<Vector3> intersect(Ray ray) override;
     Vector3 normal(Vector3 point) override;
 private:
@@ -19,7 +19,9 @@ private:
     Vector3 a_;
     Vector3 b_;
     Vector3 c_;
-    Vector3 normal_;
+    Vector3 an_;
+    Vector3 bn_;
+    Vector3 cn_;
 };
 
 

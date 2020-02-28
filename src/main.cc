@@ -30,7 +30,8 @@ int main()
 //    Plane plane2 = Plane(Vector3(0, 0, 20), Vector3(0, 0, -1), shinywhite);
     Plane plane3 = Plane(Vector3(100, 0, 0), Vector3(-1, 0, 0), mirror);
     Plane plane4 = Plane(Vector3(0, 0, 0), Vector3(0, 1, 0), shinyblue);
-    Triangle triangle = Triangle(Vector3(50, 0, 0), Vector3(50, 20, 20), Vector3(50, 20, -20), Vector3(-1, 0, 0), mirror);
+    Triangle triangle = Triangle(Vector3(50, 0, 0), Vector3(50, 20, 20), Vector3(50, 20, -20),
+            Vector3(-1, 0, 0),Vector3(-1, 0, 0),Vector3(-1, 0, 0), mirror);
 
 //    Plane plane5 = Plane(Vector3(0, 20, 0), Vector3(0, -1, 0), shinywhite);
 
