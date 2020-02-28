@@ -1,6 +1,6 @@
 #MAKE
 
-add_subdirectory(polygon)
+# add_subdirectory(polygon)
 
 set(utils_src
         vector3.cc

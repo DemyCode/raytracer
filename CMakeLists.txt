@@ -21,7 +21,7 @@ add_executable(raytracer src/main.cc)
 target_link_libraries(raytracer
         utils light
         object texture
-        scene polygon)
+        scene)
 
 if (BUILD_TEST)
     add_subdirectory(tests)
