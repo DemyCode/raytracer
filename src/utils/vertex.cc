@@ -10,3 +10,7 @@ Vertex::Vertex(double x, double y, double z, std::optional<Vector3> normal) {
     this->z_ = z;
     this->normal_ = normal;
 }
+
+std::optional<Vector3> Vertex::getNormal() {
+    return this->normal_;
+}

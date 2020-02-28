@@ -6,16 +6,22 @@
 #define RAYTRACER_PARSER_HH
 
 #include <regex>
-#include <string>
-#include <utils/vector3.hh>
+#include <fstream>
+#include <utils/vertex.hh>
+#include <scene/texture/uniformtexture.hh>
+#include <scene/object/triangle.hh>
+
 
 class Parser {
 public:
     Parser(std::string file);
+    std::vector<Triangle *> getTriangles();
 private:
+    std::smatch matcher(std::string line, std::string regex);
     std::vector<Vector3> vertices_;
     std::vector<Vector3> vetricestexture_;
     std::vector<Vector3> normals_;
+    std::vector<Triangle*> faces_;
 };
 
 

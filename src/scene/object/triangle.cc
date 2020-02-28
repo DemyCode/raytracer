@@ -4,15 +4,10 @@
 
 #include "triangle.hh"
 
-Triangle::Triangle(Vector3 a, Vector3 b, Vector3 c,
-        Vector3 an, Vector3 bn, Vector3 cn,
-        TextureMaterial *textureMaterial) {
+Triangle::Triangle(Vertex a, Vertex b, Vertex c, TextureMaterial *textureMaterial) {
     this->a_ = a;
     this->b_ = b;
     this->c_ = c;
-    this->an_ = an;
-    this->bn_ = bn;
-    this->cn_ = cn;
     this->textureMaterial_ = textureMaterial;
 }
 
@@ -61,7 +56,8 @@ bool Triangle::sameside(Vector3 a, Vector3 b, Vector3 c, Vector3 point)
     return AB.cross(AP).dot(AB.cross(AC)) >= 0;
 }
 
-Vector3 Triangle::normal(Vector3 point) {
+Vector3 Triangle::normal(Vector3 point)
+{
     (void) point;
-    return this->an_;
+    return this->a_.getNormal().value();
 }

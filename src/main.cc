@@ -13,6 +13,7 @@
 #include <utils/image.hh>
 #include <scene/object/plane.hh>
 #include <scene/object/triangle.hh>
+#include <utils/parser/parser.hh>
 
 
 int main()
@@ -30,8 +31,8 @@ int main()
 //    Plane plane2 = Plane(Vector3(0, 0, 20), Vector3(0, 0, -1), shinywhite);
     Plane plane3 = Plane(Vector3(100, 0, 0), Vector3(-1, 0, 0), mirror);
     Plane plane4 = Plane(Vector3(0, 0, 0), Vector3(0, 1, 0), shinyblue);
-    Triangle triangle = Triangle(Vector3(50, 0, 0), Vector3(50, 20, 20), Vector3(50, 20, -20),
-            Vector3(-1, 0, 0),Vector3(-1, 0, 0),Vector3(-1, 0, 0), mirror);
+    Parser parser = Parser("../objects/cube.obj");
+    std::vector<Triangle*> triangles = parser.getTriangles();
 
 //    Plane plane5 = Plane(Vector3(0, 20, 0), Vector3(0, -1, 0), shinywhite);
 
@@ -45,7 +46,7 @@ int main()
     objects.push_back(&plane3);
     objects.push_back(&plane4);
 //    objects.push_back(&plane5);
-    objects.push_back(&triangle);
+    objects.insert(objects.end(), triangles.begin(), triangles.end());
 
 //    PointLight light1 = PointLight(Vector3(30, 30, 10), 1, ColorRGB("white"));
     PointLight light2 = PointLight(Vector3(10, 30, 10), 1, ColorRGB("white"));

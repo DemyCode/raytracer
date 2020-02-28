@@ -11,7 +11,9 @@
 
 class Vertex : public Vector3{
 public:
+    Vertex() = default;
     Vertex(double x, double y, double z, std::optional<Vector3> normal);
+    std::optional<Vector3> getNormal();
 private:
     std::optional<Vector3> normal_;
 };
