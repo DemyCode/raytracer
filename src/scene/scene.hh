@@ -13,6 +13,7 @@
 #include <scene/camera.hh>
 #include <utils/color.hh>
 #include <scene/light/pointlight.hh>
+#include <scene/object/triangle.hh>
 
 class Scene {
 public:

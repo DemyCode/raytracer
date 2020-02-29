@@ -6,8 +6,8 @@
 #define RAYTRACER_TEXTUREMATERIAL_HH
 
 #include <tuple>
-#include <utils/vector3.hh>
 
+#include <utils/vector3.hh>
 #include <utils/color.hh>
 
 class TextureMaterial {

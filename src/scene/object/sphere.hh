@@ -5,8 +5,6 @@
 #ifndef RAYTRACER_SPHERE_HH
 #define RAYTRACER_SPHERE_HH
 
-#include <scene/texture/uniformtexture.hh>
-
 #include <scene/object/object.hh>
 
 class Sphere : public Object

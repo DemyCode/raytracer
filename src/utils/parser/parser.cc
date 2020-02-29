@@ -3,6 +3,7 @@
 //
 
 #include "parser.hh"
+#include <scene/texture/uniformtexture.hh>
 
 Parser::Parser(std::string path) {
     std::cout << "Parsing : " << path << std::endl;

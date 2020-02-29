@@ -5,7 +5,6 @@
 #ifndef RAYTRACER_COLOR_H
 #define RAYTRACER_COLOR_H
 
-#include <cstddef>
 #include <string>
 
 #define MAX_RGB_INTENSITY 255

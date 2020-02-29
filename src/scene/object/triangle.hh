@@ -8,7 +8,6 @@
 
 #include <scene/object/object.hh>
 #include <utils/vertex.hh>
-#include <scene/texture/texturematerial.hh>
 
 class Triangle : public Object {
 public:

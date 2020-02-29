@@ -3,7 +3,7 @@
 //
 
 #include <iostream>
-#include <math.h>
+#include <cmath>
 
 #include <utils/vector3.hh>
 #include <scene/scene.hh>
@@ -11,9 +11,10 @@
 #include <scene/light/pointlight.hh>
 #include <utils/image.hh>
 #include <utils/parser/parser.hh>
-#include <scene/object/plane.hh>
-#include <scene/object/sphere.hh>
 #include <scene/object/triangle.hh>
+#include <scene/object/plane.hh>
+#include <scene/texture/uniformtexture.hh>
+#include <scene/object/sphere.hh>
 
 
 int main()
@@ -21,13 +22,13 @@ int main()
 //    auto *shinyred = new UniformTexture(0.2, 1, ColorRGB("red"), 1);
 //    auto *shinygreen = new UniformTexture(0.2, 1, ColorRGB("green"), 1);
     //auto *shinyblue = new UniformTexture(0.2, 1, ColorRGB("blue"), 1);
-//    auto *shinywhite = new UniformTexture(0.2, 1, ColorRGB("white"), 1);
+    // auto *shinywhite = new UniformTexture(0.2, 1, ColorRGB("white"), 1);
 //    auto *shinyblue = new UniformTexture(0.2, 1, ColorRGB("blue"), 1);
 //    auto *mirror = new UniformTexture(1.0, 0, ColorRGB("white"), 5);
-//    Sphere sphere1 = Sphere(Vector3(50, 10, 0), 5, mirror);
+    //Sphere sphere1 = Sphere(Vector3(50, 10, 0), 5, shinywhite);
 //    Sphere sphere2 = Sphere(Vector3(50, 10, 20), 5, mirror);
 //    Sphere sphere3 = Sphere(Vector3(50, 10, -20), 5, mirror);
-//    Plane plane = Plane(Vector3(0, 0, -20), Vector3(0, 0, 1), shinywhite);
+    //Plane plane = Plane(Vector3(0, 0, -20), Vector3(0, 0, 1), shinywhite);
 //    Plane plane2 = Plane(Vector3(0, 0, 20), Vector3(0, 0, -1), shinywhite);
     //Plane plane3 = Plane(Vector3(100, 0, 0), Vector3(-1, 0, 0), mirror);
     //Plane plane4 = Plane(Vector3(0, -20, 0), Vector3(0, 1, 0), shinyblue);
@@ -49,7 +50,7 @@ int main()
     objects.insert(objects.end(), triangles.begin(), triangles.end());
 
 //    PointLight light1 = PointLight(Vector3(30, 30, 10), 1, ColorRGB("white"));
-    PointLight light2 = PointLight(Vector3(-500, 100, 100), 1, ColorRGB("white"));
+    PointLight light2 = PointLight(Vector3(-500, 100, -500), 1, ColorRGB("white"));
 //    PointLight light1 = PointLight(Vector3(75, 10, 10), 1, ColorRGB("blue"));
     std::vector<PointLight*> lights = std::vector<PointLight*>();
 //    lights.push_back(&light1);

@@ -7,7 +7,7 @@ option(BUILD_TEST "Build with the package as well as the tests." OFF)
 set(BUILD_SHARED_LIBS ON)
 
 # if (BUILD_DEBUG)
-#    add_compile_options(-Wall -Wextra -pedantic -Werror -std=c++17 -g3 -D RAY_DEBUG -fno-inline -O0)
+#    add_compile_options(-Wall -Wextra -pedantic  -std=c++17 -g3 -D RAY_DEBUG -fno-inline -O0)
 # else()
      add_compile_options(-Wall -Wextra -pedantic -Werror -std=c++17 -O3)
 # endif ()
@@ -18,10 +18,7 @@ add_subdirectory(src)
 
 add_executable(raytracer src/main.cc)
 
-target_link_libraries(raytracer
-        utils light
-        object texture
-        scene parser)
+target_link_libraries(raytracer scene parser texture object light utils)
 
 if (BUILD_TEST)
     add_subdirectory(tests)

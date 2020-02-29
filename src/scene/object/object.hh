@@ -9,7 +9,6 @@
 #include <tuple>
 
 #include <scene/texture/texturematerial.hh>
-#include <utils/vector3.hh>
 #include <utils/ray.hh>
 
 class Object {

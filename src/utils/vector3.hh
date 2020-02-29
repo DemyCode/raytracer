@@ -6,7 +6,7 @@
 #define RAYTRACER_VECTOR3_H
 
 #include <iostream>
-#include <math.h>
+#include <cmath>
 
 class Vector3
 {
