@@ -15,10 +15,13 @@
 #include <scene/object/plane.hh>
 #include <scene/texture/uniformtexture.hh>
 #include <scene/object/sphere.hh>
+#include <chrono>
+
 
 
 int main()
 {
+    auto start = std::chrono::high_resolution_clock::now();
 //    auto *shinyred = new UniformTexture(0.2, 1, ColorRGB("red"), 1);
 //    auto *shinygreen = new UniformTexture(0.2, 1, ColorRGB("green"), 1);
     //auto *shinyblue = new UniformTexture(0.2, 1, ColorRGB("blue"), 1);
@@ -32,7 +35,7 @@ int main()
 //    Plane plane2 = Plane(Vector3(0, 0, 20), Vector3(0, 0, -1), shinywhite);
     //Plane plane3 = Plane(Vector3(100, 0, 0), Vector3(-1, 0, 0), mirror);
     //Plane plane4 = Plane(Vector3(0, -20, 0), Vector3(0, 1, 0), shinyblue);
-    Parser parser = Parser("../objects/teapot.obj");
+    Parser parser = Parser("../objects/cube.obj");
     std::vector<Triangle*> triangles = parser.getTriangles();
 
 //    Plane plane5 = Plane(Vector3(0, 20, 0), Vector3(0, -1, 0), shinywhite);
@@ -79,9 +82,11 @@ int main()
 
     Image image = Image(width, height);
 
+
     for (int i = 0; i < height; i++)
     {
         std::cout << "Treating : " << width * i << "/" << height * width << std::endl;
+        // #pragma omp parallel for
         for (int j = 0; j < width; j++)
         {
             Vector3 origin = camera.getLocation();
@@ -99,5 +104,8 @@ int main()
 
     image.ppm_creator("output.ppm");
 
+    auto stop = std::chrono::high_resolution_clock::now();
+    auto duration = std::chrono::duration_cast<std::chrono::microseconds>(stop - start);
+    std::cout << "Duration of the program : " << duration.count() / 1000000 << " secondes" << std::endl;
     return 0;
 }
