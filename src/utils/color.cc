@@ -45,14 +45,14 @@ ColorRGB ColorRGB::operator*(double val) {
     return ColorRGB(r, g, b);
 }
 
-ColorRGB ColorRGB::operator+(ColorRGB colorRgb) const {
+ColorRGB ColorRGB::operator+(const ColorRGB& colorRgb) const {
     return ColorRGB(
             this->r_ + colorRgb.r_ <= 255 ? this->r_ + colorRgb.r_ : 255,
             this->g_ + colorRgb.g_ <= 255 ? this->g_ + colorRgb.g_ : 255,
             this->b_ + colorRgb.b_ <= 255 ? this->b_ + colorRgb.b_ : 255);
 }
 
-ColorRGB ColorRGB::operator-(ColorRGB colorRgb) const {
+ColorRGB ColorRGB::operator-(const ColorRGB& colorRgb) const {
     return ColorRGB(
             this->r_ + colorRgb.r_ >= 0 ? this->r_ + colorRgb.r_ : 0,
             this->g_ + colorRgb.g_ >= 0 ? this->g_ + colorRgb.g_ : 0,

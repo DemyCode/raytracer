@@ -35,7 +35,7 @@ int main()
 //    Plane plane2 = Plane(Vector3(0, 0, 20), Vector3(0, 0, -1), shinywhite);
     //Plane plane3 = Plane(Vector3(100, 0, 0), Vector3(-1, 0, 0), mirror);
     //Plane plane4 = Plane(Vector3(0, -20, 0), Vector3(0, 1, 0), shinyblue);
-    Parser parser = Parser("../objects/cube.obj");
+    Parser parser = Parser("../objects/teapot.obj");
     std::vector<Triangle*> triangles = parser.getTriangles();
 
 //    Plane plane5 = Plane(Vector3(0, 20, 0), Vector3(0, -1, 0), shinywhite);
@@ -81,12 +81,9 @@ int main()
     int height = 1080;
 
     Image image = Image(width, height);
-
-
     for (int i = 0; i < height; i++)
     {
-        std::cout << "Treating : " << width * i << "/" << height * width << std::endl;
-        // #pragma omp parallel for
+        #pragma omp parallel for
         for (int j = 0; j < width; j++)
         {
             Vector3 origin = camera.getLocation();
@@ -100,6 +97,7 @@ int main()
             ColorRGB colorRgb = scene.castRay(ray, bounces);
             image.setPixel(j, height - i - 1, colorRgb);
         }
+        std::cout << "Treating : " << i * width << "/" << width * height << std::endl;
     }
 
     image.ppm_creator("output.ppm");

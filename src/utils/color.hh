@@ -21,8 +21,8 @@ public:
     void setR(int r);
     void setG(int g);
     void setB(int b);
-    ColorRGB operator+(ColorRGB colorRgb) const;
-    ColorRGB operator-(ColorRGB colorRgb) const;
+    ColorRGB operator+(const ColorRGB& colorRgb) const;
+    ColorRGB operator-(const ColorRGB& colorRgb) const;
     ColorRGB operator*(double val);
 private:
     int r_;
